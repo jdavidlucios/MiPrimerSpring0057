@@ -20,20 +20,14 @@ public class AlumnoServiceImpl implements IAlumnoService {
     }
 
     @Override
-    public Alumno actualizarAlumno(Alumno alumno) {
-        try {
-            if (objAlumnoRepo.existsById(alumno.getId())) {
-                alumno.setId(alumno.getId());
-                objAlumnoRepo.save(alumno);
-            }
-            else {
-                throw new RuntimeException("UPS!!!! " + alumno.getId() + " no existe");
-            }
-
-        }
-        catch (Exception e) {
-            return alumno;
-        }
+    public Alumno actualizarAlumno(int id, Alumno alumnoActualizar) {
+        Alumno alumnoEncontrado = objAlumnoRepo.findById(id).orElse(null);
+        alumnoEncontrado.setNombres(alumnoActualizar.getNombres());
+        alumnoEncontrado.setApellido1(alumnoActualizar.getApellido1());
+        alumnoEncontrado.setApellido2(alumnoActualizar.getApellido2());
+        alumnoEncontrado.setCursoAsignado(alumnoActualizar.getCursoAsignado());
+        return objAlumnoRepo.save(alumnoEncontrado);
+    }
 
     @Override
     public List<Alumno> listarAlumnos() {
@@ -42,30 +36,18 @@ public class AlumnoServiceImpl implements IAlumnoService {
 
     @Override
     public Alumno listarAlumnosID(int idAlumno) {
-        return null;
+        return objAlumnoRepo.findById(idAlumno).orElse(null);
     }
 
     @Override
-    public void eliminarAlumno(Alumno alumno) {
-            try {
-                if (objAlumnoRepo.existsById(alumno.getId())){
-                    objAlumnoRepo.deleteById(alumno.getId());
-                }
-                else {
-                    throw new RuntimeException("UPS!!!! " + alumno.getId() + " no existe");
-                }
+    public void eliminarAlumno(int id) {
+        objAlumnoRepo.deleteById(id);
+    }
 
-            }
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-            System.out.println("Alumno borrado");
-                return alumno;
-        }
+    @Override
+    public void eliminarAlumno2(Alumno alumno) {
+        objAlumnoRepo.delete(alumno);
 
     }
-    @Override
-    public Alumno listaAlumnoId(int idAlumno);
-    return objAlumnoRepo.findById(idAlumno).orElse(null);
 
 }

@@ -4,8 +4,9 @@ import java.util.List;
 
 public interface IAlumnoService {
     public Alumno crearAlumno(Alumno nuevoAlumno);
-    public Alumno actualizarAlumno(Alumno alumno);
+    public Alumno actualizarAlumno(int id, Alumno alumnoActualizar);
     public List<Alumno> listarAlumnos();
     public Alumno listarAlumnosID(int idAlumno);
-    public void eliminarAlumno(Alumno alumno);
+    public void eliminarAlumno(int id);
+    public void eliminarAlumno2(Alumno alumno);
 }
