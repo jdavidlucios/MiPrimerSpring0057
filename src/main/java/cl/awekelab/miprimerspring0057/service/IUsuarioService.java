@@ -4,10 +4,10 @@ import java.util.List;
 
 public interface IUsuarioService {
     public Usuario crearUsuario(Usuario nuevoUsuario);
-    public Usuario actualizarUsuario(int id);
+    public Usuario actualizarUsuario(int id, Usuario usuarioActualizar);
     public List<Usuario> listarUsuario();
-    public Usuario listarUsuarioID(int idUsuario);
+    Usuario listarUsuarioId(int id);
     public void eliminarUsuario(int id);
 
-    Usuario listarUsuarioId(int id);
+
 }

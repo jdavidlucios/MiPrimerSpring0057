@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface ICursoService {
     public Curso crearCurso(Curso nuevoCurso);
-    public Curso actualizarCurso(int id);
+    Curso actualizarCurso(int id, Curso cursoActualizar);
     public List<Curso> listarCurso();
     public Curso listarCursoID(int idCurso);
-    public void eliminarCurso(int id);
+    void eliminarCurso(Curso curso);
 }

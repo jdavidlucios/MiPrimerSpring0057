@@ -1,30 +1,39 @@
 package cl.awekelab.miprimerspring0057.service.serviceimpl;
+
 import cl.awekelab.miprimerspring0057.entity.Profesor;
 import cl.awekelab.miprimerspring0057.repository.IProfesorRepository;
 import cl.awekelab.miprimerspring0057.service.IProfesorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Service("profesorServiceImpl")
 public class ProfesorServiceImpl implements IProfesorService {
+
     @Autowired
     IProfesorRepository objProfesorRepo;
+
     @Override
     public Profesor crearProfesor(Profesor profesorCreado) {
+
         Profesor nuevoProfesor= new Profesor();
         nuevoProfesor = objProfesorRepo.save(profesorCreado);
         return nuevoProfesor;
     }
 
     @Override
-    public Profesor actualizarProfesor(int id) {
-        return null;
+    public Profesor actualizarProfesor(int id, Profesor profesorActualizar) {
+
+        Profesor profesorEncontrado = objProfesorRepo.findById(id).orElse(null);
+        profesorEncontrado.setNombres(profesorActualizar.getNombres());
+        return objProfesorRepo.save(profesorEncontrado);
     }
 
     @Override
     public List<Profesor> listarProfesor() {
+
         List<Profesor> listaMostrar = new ArrayList<Profesor>();
         listaMostrar = objProfesorRepo.findAll();
         return listaMostrar;
@@ -32,14 +41,14 @@ public class ProfesorServiceImpl implements IProfesorService {
 
     @Override
     public Profesor listarProfesorID(int idProfesor) {
-       /* Profesor elegido = new Profesor();
-        elegido =objProfesorRepo.findById(idProfesor);
-        */
-        return null;
+
+        return objProfesorRepo.findById(idProfesor).orElse(null);
     }
 
     @Override
-    public void eliminarProfesor(int id) {
+    public void eliminarProfesor(Profesor profesor) {
+
+        objProfesorRepo.delete(profesor);
 
     }
 }

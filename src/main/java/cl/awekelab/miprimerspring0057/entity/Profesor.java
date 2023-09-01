@@ -6,6 +6,11 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "profesores")
 public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
