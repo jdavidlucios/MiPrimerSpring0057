@@ -16,16 +16,32 @@ public class CursoRestController {
 
     @GetMapping("/{id}")
     public Curso listarCursoId(@PathVariable int id) {
+
         return objCursoService.listarCursoID(id);
     }
 
     @PostMapping
     public Curso crearCurso(@RequestBody Curso curso){
+
         return objCursoService.crearCurso(curso);
 
     }
     @GetMapping
     public List<Curso> listarCurso(){
+
         return objCursoService.listarCurso();
+    }
+
+    @PutMapping("/{id}")
+    public Curso actualizarCurso(@PathVariable int id, @RequestBody Curso curso){
+
+        return objCursoService.actualizarCurso(id, curso);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarCurso(@RequestBody Curso curso){
+
+        objCursoService.eliminarCurso(curso);
     }
 }

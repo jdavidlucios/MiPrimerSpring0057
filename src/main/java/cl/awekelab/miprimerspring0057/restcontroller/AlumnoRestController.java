@@ -16,16 +16,31 @@ public class AlumnoRestController {
 
     @GetMapping("/{id}")
     public Alumno listarAlumnoId(@PathVariable int id) {
+
         return objAlumnoService.listarAlumnosID(id);
     }
 
     @PostMapping
-    public Alumno crearUsuario(@RequestBody Alumno alumno){
+    public Alumno crearAlumno(@RequestBody Alumno alumno){
+
         return objAlumnoService.crearAlumno(alumno);
 
     }
     @GetMapping
-    public List<Alumno> listarUsuarios(){
+    public List<Alumno> listarAlumnos(){
+
         return objAlumnoService.listarAlumnos();
+    }
+
+    @PutMapping("/{id}")
+    public Alumno actualizarAlumno(@PathVariable int id, @RequestBody Alumno alumno){
+
+        return objAlumnoService.actualizarAlumno(id, alumno);
+
+    }
+
+    @DeleteMapping("/{id}")
+    public void eliminarAlumno(@PathVariable int id){
+        objAlumnoService.eliminarAlumno(id);
     }
 }
