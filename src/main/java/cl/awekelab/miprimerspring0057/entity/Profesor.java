@@ -30,4 +30,5 @@ public class Profesor {
             joinColumns = @JoinColumn(name = "FK_Profesor", nullable = false),
             inverseJoinColumns = @JoinColumn(name = "FK_Curso", nullable = false))
     private List<Curso> listaCursos;
+
 }

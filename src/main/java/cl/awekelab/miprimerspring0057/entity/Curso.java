@@ -1,4 +1,6 @@
 package cl.awekelab.miprimerspring0057.entity;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,9 +22,11 @@ public class Curso {
     @Column(length = 1)
     private String nombreCurso;
 
-    @ManyToMany(mappedBy = "listacurso")
-    private List<Profesor> listaprofesores;
+    @JsonIgnore
+    @ManyToMany(mappedBy = "listaCursos")
+    private List<Profesor> listaProfesores;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "cursoAsignado")
     private List<Alumno> listaAlumnos;
 
