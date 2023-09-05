@@ -23,11 +23,11 @@ public class Curso {
     private String nombreCurso;
 
     @JsonIgnore
-    @ManyToMany(mappedBy = "listaCursos")
+    @ManyToMany(mappedBy = "listaCursos", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Profesor> listaProfesores;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "cursoAsignado")
+    @OneToMany(mappedBy = "cursoAsignado", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Alumno> listaAlumnos;
 
 }
