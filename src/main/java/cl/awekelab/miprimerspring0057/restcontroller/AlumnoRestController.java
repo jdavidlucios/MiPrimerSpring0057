@@ -41,6 +41,7 @@ public class AlumnoRestController {
 
     @DeleteMapping("/{id}")
     public void eliminarAlumno(@PathVariable int id){
+
         objAlumnoService.eliminarAlumno(id);
     }
 }
