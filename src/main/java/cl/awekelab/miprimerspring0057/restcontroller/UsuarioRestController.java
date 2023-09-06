@@ -20,7 +20,7 @@ public class UsuarioRestController {
         return objUsuarioService.listarUsuarioId(id);
     }
 
-    @PostMapping
+    @PostMapping("/list")
     public Usuario crearUsuario(@RequestBody Usuario usuario) {
 
         return objUsuarioService.crearUsuario(usuario);
