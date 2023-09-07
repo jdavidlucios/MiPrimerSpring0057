@@ -2,13 +2,11 @@ package cl.awekelab.miprimerspring0057.controller;
 
 import cl.awekelab.miprimerspring0057.entity.Usuario;
 import cl.awekelab.miprimerspring0057.service.IUsuarioService;
+import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +17,7 @@ public class UsuarioController {
     @Autowired
     IUsuarioService objUsuarioService;
 
+    @GetMapping
     public String listarUsuarios(Model model){
         List<Usuario> listaUsuarios = objUsuarioService.listarUsuario();
         model.addAttribute("atributoListaUsuarios", listaUsuarios);
@@ -33,5 +32,11 @@ public class UsuarioController {
     public String mostrarFormularioCrearUsuario(@ModelAttribute Usuario usuario){
         objUsuarioService.crearUsuario(usuario);
         return "redirect:/usuario"; //Redirije a "Listar Usuarios"
+    }
+
+    @PostMapping("/eliminar/{id}")
+    public String eliminarUsuario(@PathVariable int id){
+        objUsuarioService.eliminarUsuario(id);
+        return "redirect:/usuario";
     }
 }
