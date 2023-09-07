@@ -2,7 +2,6 @@ package cl.awekelab.miprimerspring0057.controller;
 
 import cl.awekelab.miprimerspring0057.entity.Usuario;
 import cl.awekelab.miprimerspring0057.service.IUsuarioService;
-import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
