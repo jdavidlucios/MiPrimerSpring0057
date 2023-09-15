@@ -11,6 +11,8 @@ public interface IProfesorService {
 
         public List<Profesor> listarProfesor();
 
-        public void eliminarProfesor(int id);
+    Profesor asignarCursoAProfesor(int id, int cursoId);
+
+    public void eliminarProfesor(int id);
         public Profesor listaProfesorId(int idProfesor);
     }
