@@ -1,5 +1,7 @@
 package cl.awakelab.miprimerspring.service;
 import cl.awakelab.miprimerspring.entity.Curso;
+import cl.awakelab.miprimerspring.entity.Profesor;
+
 import java.util.List;
 
 public interface ICursoService {
@@ -11,6 +13,8 @@ public interface ICursoService {
     public List<Curso> listarCurso();
 
     String obtenerNombreCursoPorId(int cursoId);
+
+    Curso asignarProfesorACurso(Curso cursoRecibido, Profesor profesorRecibido);
 
     public void eliminarCurso(int id);
     public Curso listaCursoId(int idCurso);

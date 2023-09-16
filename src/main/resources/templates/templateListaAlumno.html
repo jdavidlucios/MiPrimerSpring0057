@@ -146,7 +146,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                 </div>
-                                <form th:action="@{/alumno/editar/{id}(id=${alumno.getId()})}" method="post">
+                                <form th:action="@{/alumno/editarAlumno/{id}(id=${alumno.getId()})}" method="post">
                                     <div class="modal-body">
                                         <div>
                                             <label for="nombres" class="form-label">
@@ -171,6 +171,15 @@
                                             <input type="text" class="form-control" id="actualizarApellido2"
                                                    name="apellido2" required
                                                    th:value="${alumno.apellido2}">
+                                        </div>
+                                        <div>
+                                            <label for="cursoAsignado" class="form-label">
+                                                Curso Asignado:
+                                            </label>
+                                            <input type="text" class="form-control" id="actualizarCursoAsignado"
+                                                   name="cursoAsignado" required
+                                                   placeholder="ingrese id del curso"
+                                                   th:each="curso:${alumno.cursoAsignado}" th:text="${curso.nombreCurso}">
                                         </div>
 
                                     </div>

@@ -1,6 +1,7 @@
 package cl.awakelab.miprimerspring.controller;
 
 import cl.awakelab.miprimerspring.entity.Alumno;
+import cl.awakelab.miprimerspring.entity.Profesor;
 import cl.awakelab.miprimerspring.service.IAlumnoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,12 @@ public class AlumnoController {
     public String mostrarFormularioCrearAlumno(Model  model){
 
         return "templateListaAlumno";
+    }
+
+    @PostMapping("/editarAlumno/{id}")
+    public String editarAlumno(@PathVariable int id,@ModelAttribute Alumno alumno){
+        objAlumnoService.actualizarAlumno(id, alumno);
+        return "redirect:/alumno";
     }
     @PostMapping("/crearAlumno")
     public String crearAlumno(@ModelAttribute Alumno alumno){
